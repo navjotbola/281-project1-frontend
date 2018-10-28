@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "aws s3 sync build/ s3://project1-app-client -- delete",
+    "deploy": "aws s3 sync build/ s3://project1-app-client --delete",
     "postdeploy": "aws cloudfront create-invalidation --distribution-id E2XZ1OWULRJR62 --paths '/*' && aws cloudfront create-invalidation --distribution-id EATVZ6W5U2U5T --paths '/*'",
     "eject": "react-scripts eject"
   },
