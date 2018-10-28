@@ -1,0 +1,80 @@
+.lander {
+    padding: 80px 0;
+    text-align: center;
+    width: 50px;
+}
+
+.lander h1 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+.lander p {
+    color: #999;
+}
+
+.home-page {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.files-container {
+    display: flex;
+    padding: 50px;
+}
+
+.file-container {
+    margin: 10px;
+    border: 1px solid #2FBB9B;
+    padding: 10px;
+    border-radius: 5px;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+    position: relative;
+    width: 300px;
+}
+
+.file-container:hover {
+    margin: 10px;
+    cursor: pointer;
+    background-color: #425d71;
+}
+
+.file-container span {
+    display: block;
+}
+
+.add-files-btn {
+    color: white;
+    background-color: orange;
+    margin: 20px;
+    float: right;
+    border-color: orange;
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+div .file-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 10px;
+    margin-right: 0px;
+}
+
+.file-description {
+    font-weight: bold;
+    margin: 15px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.alert-white {
+    background-color: white;
+    color: #425d71;
+    width: 100%;
+}

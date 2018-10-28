@@ -1,0 +1,29 @@
+@media all and (min-width: 480px) {
+    .Login {
+        padding: 60px 0;
+    }
+    .Login form {
+        margin: 0 auto;
+        max-width: 320px;
+    }
+    .form-group {
+        padding-bottom: 0;
+    }
+}
+
+.Login {
+    text-align: center;
+}
+
+.login-container {
+    background-color: #ffa337;
+    width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 10px;
+
+}
+
+.control-label {
+    float: left;
+}

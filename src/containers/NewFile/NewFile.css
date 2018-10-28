@@ -1,0 +1,43 @@
+.new-file-jumbotron {
+    margin: 0px 50px;
+    color: #1E2A33;
+    padding-top: 20px;
+    height: 315px;
+}
+
+.form-group-new {
+    padding-bottom: 50px;
+}
+
+.existing-attachment {
+    float: left;
+}
+
+.dropzone {
+    width: 100%;
+    border: 3px solid #2FBB9B;
+    margin: 15px 0px;
+    padding: 15px;
+    border-style: dashed;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+}
+
+.dropzone:hover {
+    cursor: pointer;
+    background-color: #d6d6d6;
+}
+
+.action-button {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.file-header {
+    margin-left: 13px;
+    margin-bottom: 25px;
+    color: grey;
+}
