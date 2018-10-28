@@ -5,4 +5,4 @@ phases:
       - npm install
   build:
     commands:
-      - npm run deploy
+      - APP_STAGE=prod npm run deploy
