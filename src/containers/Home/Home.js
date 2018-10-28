@@ -46,7 +46,7 @@ export default class Home extends Component {
             )
         }
         return files.map((file, i) =>
-            <div className="files-container">
+            <div className="inline">
                 <LinkContainer key={file.filesId} to={`/files/${file.fileId}`}>
                     <div className="file-container animated fadeIn shadow">
                         <i className="far fa-file file-icon"></i>

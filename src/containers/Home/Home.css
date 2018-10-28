@@ -78,3 +78,5 @@ div .file-icon {
     color: #425d71;
     width: 100%;
 }
+
+div.inline { float:left; }
