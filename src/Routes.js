@@ -6,6 +6,7 @@ import AuthenticatedAdmin from "./components/RouteTypes/AuthenticatedAdmin";
 import Unauthenticated from "./components/RouteTypes/Unauthenticated";
 import Home from "./containers/Home/Home";
 import Signup from "./containers/Signup/Signup";
+import Login from "./containers/Login/Login";
 import NewFile from "./containers/NewFile/NewFile";
 import Files from "./containers/Files/Files";
 import Admin from "./containers/Admin/Admin";
@@ -13,7 +14,9 @@ import NotFound from "./containers/Error/NotFound";
 
 export default ({ childProps }) =>
     <Switch>
-        <Applied path="/" exact component={Home} props={childProps}/>
+        {/* <Applied path="/" exact component={Home} props={childProps}/> */}
+        <Authenticated path="/" exact component={Home} props={childProps} />
+        <Unauthenticated path="/login" exact component={Login} props={childProps} />
         <Unauthenticated path="/signup" exact component={Signup} props={childProps} />
         <Authenticated path="/files/new" exact component={NewFile} props={childProps} />
         <Authenticated path="/files/:id" exact component={Files} props={childProps} />

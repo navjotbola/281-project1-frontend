@@ -111,6 +111,8 @@ export default class Files extends Component {
         this.setState({ isDeleting: true });
         try {
             await this.deleteFile();
+            // Delete the old file
+            await s3Delete(this.state.file);
             this.props.history.push("/");
         } catch (e) {
             alert(e);

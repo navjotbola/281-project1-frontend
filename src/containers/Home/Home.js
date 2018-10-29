@@ -11,14 +11,19 @@ export default class Home extends Component {
         this.state = {
             isLoading: true,
             files: [],
+            isLoggedIn: false,
+            firstname: null,
+            lastname: null
         };
     }
 
     async componentDidMount() {
-        if (!this.props.isLoggedIn) {
+        const { isLoggedIn } = this.props;
+        if (!isLoggedIn) {
             return;
         }
         this.getFiles()
+        this.setState({isLoggedIn});
     }
 
     async getFiles() {

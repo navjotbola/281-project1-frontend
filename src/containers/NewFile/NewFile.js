@@ -56,13 +56,19 @@ export default class NewFile extends Component {
         this.setState({ isLoading: true });
         try {
             const currentUser = await Auth.currentAuthenticatedUser();
-            const { attributes: { family_name, given_name } } = currentUser;
+            let firstname = null;
+            let lastname = null
+            if(currentUser.attributes) {
+                const { attributes: { family_name, given_name } } = currentUser;
+                firstname = given_name;
+                lastname = family_name;
+            }
             const attachment = this.file ? await s3Upload(this.file): null;
             await this.createFile({
                 attachment,
                 description: this.state.description,
-                firstname: given_name,
-                lastname: family_name
+                firstname,
+                lastname
             });
             this.props.history.push("/");
         } catch (e) {
