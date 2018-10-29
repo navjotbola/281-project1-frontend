@@ -121,7 +121,7 @@ export default class Login extends Component {
                             />
                         </FormGroup>
                         <ButtonToolbar>
-                            <Button className="btn btn-default pull-right" disabled={!this.validateForm()} type="submit">
+                            <Button className="btn btn-default pull-right btn-success" disabled={!this.validateForm()} type="submit">
                                 Login
                             </Button>
                             <LinkContainer to={"/signup"}>
