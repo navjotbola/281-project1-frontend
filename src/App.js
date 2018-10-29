@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Auth } from "aws-amplify";
 import { Link, withRouter } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import Routes from "./Routes";
 import "./App.css";
@@ -14,6 +13,7 @@ class App extends Component {
       lastname: "",
       isLoggedIn: false,
       isLoggingIn: true,
+      isAdmin: false,
     };
   }
 
@@ -24,12 +24,14 @@ class App extends Component {
   // When this component loads, we want to check to see if the user
   // has or has not been authenticated. We then pass this information
   // to the rest of the application via the route component.
+  // Also check if the use is an admin
   async validateUserSession(){
     try {
       await Auth.currentSession();
       this.userHasAuthenticated(true);
       const currentUser = await Auth.currentAuthenticatedUser();
       const { attributes: { family_name, given_name } } = currentUser;    
+      this.userIsAdmin(currentUser);
       this.setState({ firstname: given_name, lastname: family_name });
     }
     catch(e) {
@@ -38,6 +40,12 @@ class App extends Component {
       }
     }
     this.setState({ isLoggingIn: false });
+  }
+
+  userIsAdmin = currentUser => {
+    if(currentUser.attributes.profile && currentUser.attributes.profile === "admin") {
+      this.setState({ isAdmin: true });
+    }
   }
 
   userHasAuthenticated = authenticated => {
@@ -50,11 +58,16 @@ class App extends Component {
     this.props.history.push("/")
   }
 
+  goToAdminPage = async event => {
+    this.props.history.push("/admin")
+  }
+
   render() {
-  
+    const { isLoggedIn, isAdmin } = this.state;
     // Child props we are sending out to the other components.
     const childProps = {
-      isLoggedIn: this.state.isLoggedIn,
+      isLoggedIn,
+      isAdmin,
       userHasAuthenticated: this.userHasAuthenticated
     };
 
@@ -72,8 +85,9 @@ class App extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            {this.state.isLoggedIn ? <Navbar.Brand disabled>{firstname} {lastname}</Navbar.Brand> : null}
-            {this.state.isLoggedIn ? <NavItem onClick={this.handleLogout}>
+            {isLoggedIn && isAdmin ? <Navbar.Brand style={{cursor: "pointer"}} onClick={this.goToAdminPage} disabled>Admin</Navbar.Brand> : null}
+            {isLoggedIn && !isAdmin ? <Navbar.Brand disabled>{firstname} {lastname}</Navbar.Brand> : null}
+            {isLoggedIn ? <NavItem onClick={this.handleLogout}>
               <span style={{color: 'Tomato'}}>
                 <i className="fas fa-sign-out-alt fa-fw"></i>
                 Logout

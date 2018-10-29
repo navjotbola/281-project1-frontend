@@ -36,7 +36,6 @@ export default class Home extends Component {
     }
 
     renderFilesList(files) {
-        console.log(files)
         if (!files.length) {
             return (
                 <Alert className="alert-white">

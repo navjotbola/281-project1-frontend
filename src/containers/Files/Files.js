@@ -44,7 +44,6 @@ export default class Files extends Component {
     }
 
     onDrop(files) {
-        console.log(files[0]);
         this.file = files[0];
         this.setState({newFile: files[0]});
     }
@@ -120,8 +119,6 @@ export default class Files extends Component {
     }
     
     render() {
-        console.log(this.state.file);
-
         const { file, newFile } = this.state;
         return (
             <div>

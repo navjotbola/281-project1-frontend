@@ -1,0 +1,15 @@
+.admin-page-container {
+    padding: 25px;
+}
+
+tbody tr{
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+}
+
+tbody tr:hover {
+    background-color: #425d71;
+}
