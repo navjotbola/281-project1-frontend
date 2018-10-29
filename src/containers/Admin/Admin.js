@@ -43,7 +43,7 @@ export default class NewFile extends Component {
         try {
             const file = await this.getFile(fileId);
             await this.deleteFile(fileId);
-            await deletFileFromS3(file);
+            // await deletFileFromS3(file);
             window.location.reload();
         } catch (e) {
             alert(e);
