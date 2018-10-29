@@ -35,27 +35,25 @@ export default class NewFile extends Component {
         return API.get("files", "/admin");
     }
 
-    handleDelete = async fileId => {
+    handleDelete = async (fileId, userId) => {
         const confirmed = window.confirm("Are you sure you want to delete this file?");
         if (!confirmed) {
             return;
         }
         try {
-            const file = await this.getFile(fileId);
-            await this.deleteFile(fileId);
-            // await deletFileFromS3(file);
+            await this.deleteFile(fileId, userId);
             window.location.reload();
         } catch (e) {
             alert(e);
         }
     }
 
-    getFile(fileId) {
-        return API.get("files", `/files/${fileId}`);
-    }
-
-    deleteFile(fileId) {
-        return API.del("files", `/files/${fileId}`);
+    deleteFile(fileId, userId) {
+        return API.del("files", `/admin/${fileId}`, {
+            body: {
+                userId
+            }
+        });
     }
 
     render() {
@@ -84,7 +82,7 @@ export default class NewFile extends Component {
                                 <td>{new Date(file.createdAt).toLocaleString()}</td>
                                 <td>{new Date(file.lastEdited).toLocaleString()}</td>
                                 <td>
-                                    <Button onClick={() => this.handleDelete(file.fileId)} bsStyle="danger" className="pull-right delete">
+                                    <Button onClick={() => this.handleDelete(file.fileId, file.userId)} bsStyle="danger" className="pull-right delete">
                                         Delete
                                     </Button>
                                 </td>
