@@ -85,6 +85,7 @@ export default class Login extends Component {
         this.setState({ isLoading: true })
         try {
             await Auth.signIn(this.state.email, this.state.password);
+            window.location.reload();
             this.props.userHasAuthenticated(true);
         } catch (e) {
             alert(e.message);

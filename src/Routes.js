@@ -14,7 +14,6 @@ import NotFound from "./containers/Error/NotFound";
 
 export default ({ childProps }) =>
     <Switch>
-        {/* <Applied path="/" exact component={Home} props={childProps}/> */}
         <Authenticated path="/" exact component={Home} props={childProps} />
         <Unauthenticated path="/login" exact component={Login} props={childProps} />
         <Unauthenticated path="/signup" exact component={Signup} props={childProps} />
