@@ -38,7 +38,9 @@ const prod = {
     }
 };
 
-const config = process.env.APP_STAGE === 'prod' ? prod : dev;
+console.log(process.env);
+
+const config = process.env.REACT_APP_ENV_PIPELINE_STAGE === 'prod' ? prod : dev;
 
 export default {
     MAX_ATTACHMENT_SIZE: 10000000,
