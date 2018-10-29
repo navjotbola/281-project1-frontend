@@ -129,7 +129,7 @@ export default class Login extends Component {
                                     Sign Up
                                 </Button>
                             </LinkContainer>
-                            <Button className="btn btn-default pull-right" onClick={this.loginWithFacebook}>
+                            <Button className="btn btn-default pull-right facebook-btn" onClick={this.loginWithFacebook}>
                                 Login with FaceBook
                             </Button>
                         </ButtonToolbar>

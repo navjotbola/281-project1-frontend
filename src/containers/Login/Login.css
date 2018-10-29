@@ -27,3 +27,9 @@
 .control-label {
     float: left;
 }
+
+.facebook-btn {
+    background-color: #4267B2;
+    border: none;
+    color: white;
+}
