@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import { FormGroup, FormControl, ControlLabel, Button, ButtonToolbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import LoaderButton from "../../components/LoaderButton";
 import "./Login.css";
 
 function faceBookDidInitialize() {

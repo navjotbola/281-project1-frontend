@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import {
-HelpBlock,
 FormGroup,
 FormControl,
 ControlLabel,
 Button,
 ButtonToolbar
 } from "react-bootstrap";
-import LoaderButton from "../../components/LoaderButton";
 import "./Signup.css";
 
 export default class Signup extends Component {

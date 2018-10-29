@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { API, Auth } from "aws-amplify";
-import { Table, Button, Jumbotron } from "react-bootstrap";
-import { s3Delete } from "../../libs/awsLib";
+import { API } from "aws-amplify";
+import { Table, Button } from "react-bootstrap";
+import { deletFileFromS3 } from "../../utils/s3Actions";
 import "./Admin.css";
 
 export default class NewFile extends Component {
@@ -43,7 +43,7 @@ export default class NewFile extends Component {
         try {
             const file = await this.getFile(fileId);
             await this.deleteFile(fileId);
-            await s3Delete(file);
+            await deletFileFromS3(file);
             window.location.reload();
         } catch (e) {
             alert(e);

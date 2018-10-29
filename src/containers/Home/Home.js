@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { API, Auth } from "aws-amplify";
+import { API } from "aws-amplify";
 import { Button, Alert, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Login from "../Login/Login";
@@ -69,7 +69,6 @@ export default class Home extends Component {
     }
 
     renderLander = () => {
-        const authenticationProps = this.props;
         return <Login userHasAuthenticated={this.props.userHasAuthenticated}/>;
     }
 

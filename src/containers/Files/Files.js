@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { API, Storage } from "aws-amplify";
 import { FormGroup, FormControl, ControlLabel, Jumbotron, Form, Col, Button} from "react-bootstrap";
-import LoaderButton from "../../components/LoaderButton";
 import Dropzone from 'react-dropzone'
-import { s3Upload, s3Delete } from "../../libs/awsLib";
-import config from "../../config";
+import { uploadFileToS3, deletFileFromS3 } from "../../utils/s3Actions";
+import configurations from "../../utils/configurations";
 import "./Files.css";
 
 export default class Files extends Component {
@@ -75,17 +74,17 @@ export default class Files extends Component {
     handleSubmit = async event => {
         let attachment;
         event.preventDefault();
-        if (this.file && this.file.size > config.MAX_ATTACHMENT_SIZE) {
+        if (this.file && this.file.size > configurations.FILE_SIZE) {
             alert(`Please pick a file smaller than
-            ${config.MAX_ATTACHMENT_SIZE/1000000} MB.`);
+            ${configurations.FILE_SIZE/1000000} MB.`);
             return;
         }
         this.setState({ isLoading: true });
         try {
             if (this.file) {
-                attachment = await s3Upload(this.file);
+                attachment = await uploadFileToS3(this.file);
                 // Delete the old file after uploading the new one
-                await s3Delete(this.state.file);
+                await deletFileFromS3(this.state.file);
             }
             await this.saveFile({
                 description: this.state.description,
@@ -112,7 +111,7 @@ export default class Files extends Component {
         try {
             await this.deleteFile();
             // Delete the old file
-            await s3Delete(this.state.file);
+            await deletFileFromS3(this.state.file);
             this.props.history.push("/");
         } catch (e) {
             alert(e);

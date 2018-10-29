@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import { FormGroup, FormControl, ControlLabel, Jumbotron, Form, Col, Button} from "react-bootstrap";
-import LoaderButton from "../../components/LoaderButton";
 import Dropzone from 'react-dropzone'
-import config from "../../config";
+import configurations from "../../utils/configurations";
 import { API } from "aws-amplify";
-import { s3Upload } from "../../libs/awsLib";
+import { uploadFileToS3 } from "../../utils/s3Actions";
 import "./NewFile.css";
 
 export default class NewFile extends Component {
@@ -48,9 +47,9 @@ export default class NewFile extends Component {
             alert("You must specify a file to upload");
             return;
         }
-        if (this.file && this.file.size > config.MAX_ATTACHMENT_SIZE) {
+        if (this.file && this.file.size > configurations.FILE_SIZE) {
             alert(`Please pick a file smaller than
-            ${config.MAX_ATTACHMENT_SIZE/1000000} MB.`);
+            ${configurations.FILE_SIZE/1000000} MB.`);
             return;
         }
         this.setState({ isLoading: true });
@@ -63,7 +62,7 @@ export default class NewFile extends Component {
                 firstname = given_name;
                 lastname = family_name;
             }
-            const attachment = this.file ? await s3Upload(this.file): null;
+            const attachment = this.file ? await uploadFileToS3(this.file): null;
             await this.createFile({
                 attachment,
                 description: this.state.description,

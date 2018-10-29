@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import { Link, withRouter } from "react-router-dom";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
-import config from "./config";
-import Routes from "./Routes";
+import configurations from "../utils/configurations";
+import Routes from "../Routes";
 import "./App.css";
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
   initializeFBSDK() {
     window.fbAsyncInit = function() {
       window.FB.init({
-        appId      : config.social.facebook,
+        appId      : configurations.OTHER.facebook,
         cookie     : true,
         xfbml      : true,
         version    : 'v3.1'
