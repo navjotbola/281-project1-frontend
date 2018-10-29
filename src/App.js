@@ -26,7 +26,7 @@ class App extends Component {
   initializeFBSDK() {
     window.fbAsyncInit = function() {
       window.FB.init({
-        appId      : config.social.FB,
+        appId      : config.social.facebook,
         cookie     : true,
         xfbml      : true,
         version    : 'v3.1'
